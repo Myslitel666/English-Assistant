@@ -17,7 +17,7 @@
 <Header height="2.75rem">
   <button style:gap="0.5rem">
     <img
-      src={$themeMode === "light" ? "/light-mega.png" : "/dark-mega.png"}
+      src={$themeMode === "light" ? "/light-mega2.png" : "/dark-mega2.png"}
       alt="logo"
       class="logo"
     />
