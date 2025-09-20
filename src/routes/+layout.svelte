@@ -14,7 +14,7 @@
   let { children } = $props();
 </script>
 
-<Header height="2.75rem">
+<Header height="53px">
   <button style:gap="0.5rem">
     <img
       src={$themeMode === "light" ? "/light-mega2.png" : "/dark-mega2.png"}
@@ -24,14 +24,14 @@
     <p style:font-size="26px">
       <span
         style:margin-left="3.25rem"
-        style:color={theme?.palette.primary}
+        style:color={$themeStore.palette.primary}
         style:transition="all 0.3s"
       >
         English Assistant
       </span>
     </p>
   </button>
-  <div style:margin-left="auto" style:margin-right="1.25rem">
+  <div style:margin-left="auto" style:margin-right="2px">
     <ColorThemeSwitch />
   </div>
 </Header>
@@ -49,8 +49,8 @@
     position: absolute;
     left: 0;
     margin-left: 0.25rem;
-    width: 3.25rem;
-    height: 3.25rem;
+    width: 48px;
+    height: 48px;
     transition: transform 0.3s;
   }
 
