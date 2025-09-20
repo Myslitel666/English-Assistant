@@ -23,16 +23,16 @@
   });
 
   export let columns = [
-    { field: "value", header: "Special Word", width: "150px" },
+    { field: "value", header: "Special Word", width: "200px" },
     {
       field: "translate",
       header: "Translate",
-      width: "150px",
+      width: "220px",
     },
     {
       field: "example_use",
       header: "Example Of Use",
-      width: "600px",
+      width: "400px",
     },
   ];
 </script>
@@ -48,7 +48,7 @@
     <AutoComplete bind:value={subjectWord} options={subjects} label="Subject" />
   </div>
   <div class="subject">
-    <DataGrid width="100%" maxWidth="902px" {columns} rows={specialWords} />
+    <DataGrid width="100%" maxWidth="822px" {columns} rows={specialWords} />
   </div>
 </div>
 
