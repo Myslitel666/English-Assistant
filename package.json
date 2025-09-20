@@ -23,6 +23,6 @@
 	"dependencies": {
 		"dotenv": "^17.2.0",
 		"pg": "^8.16.3",
-		"svelte-elegant": "^1.8.11"
+		"svelte-elegant": "^1.8.13"
 	}
 }

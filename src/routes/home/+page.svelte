@@ -1,5 +1,26 @@
 <script>
   import { DataGrid, AutoComplete } from "svelte-elegant";
+  import { onMount } from "svelte";
+  import * as fetch from "./fetch";
+
+  let subjects;
+  let specialWords;
+  let subjectWord = "";
+
+  $: if (subjectWord) {
+    getSpecialWords();
+  }
+
+  async function getSpecialWords() {
+    specialWords = await fetch.getSpecialWords(subjectWord);
+    console.log(specialWords);
+  }
+
+  onMount(async () => {
+    subjects = await fetch.getSubjects();
+    subjectWord = subjects.includes("React") ? "React" : subjects[0];
+    specialWords = await fetch.getSpecialWords(subjectWord);
+  });
 </script>
 
 <div class="page">
@@ -10,7 +31,7 @@
   </p>
   <div class="subject">
     <p>Choose Subject:</p>
-    <AutoComplete width="200px" label="Subject" />
+    <AutoComplete bind:value={subjectWord} options={subjects} label="Subject" />
   </div>
   <DataGrid />
 </div>
