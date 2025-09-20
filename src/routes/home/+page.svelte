@@ -4,7 +4,7 @@
   import * as fetch from "./fetch";
 
   let subjects;
-  let specialWords;
+  let specialWords = { value: "", translate: "", example_use: "" };
   let subjectWord = "";
 
   $: if (subjectWord) {
@@ -21,6 +21,20 @@
     subjectWord = subjects.includes("React") ? "React" : subjects[0];
     specialWords = await fetch.getSpecialWords(subjectWord);
   });
+
+  export let columns = [
+    { field: "value", header: "Special Word", width: "150px" },
+    {
+      field: "translate",
+      header: "Translate",
+      width: "150px",
+    },
+    {
+      field: "example_use",
+      header: "Example Of Use",
+      width: "600px",
+    },
+  ];
 </script>
 
 <div class="page">
@@ -33,7 +47,9 @@
     <p>Choose Subject:</p>
     <AutoComplete bind:value={subjectWord} options={subjects} label="Subject" />
   </div>
-  <DataGrid />
+  <div class="subject">
+    <DataGrid width="902px" {columns} rows={specialWords} />
+  </div>
 </div>
 
 <style>
