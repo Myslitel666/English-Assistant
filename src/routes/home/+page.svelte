@@ -2,9 +2,10 @@
   import { DataGrid, AutoComplete } from "svelte-elegant";
   import { onMount } from "svelte";
   import * as fetch from "./fetch";
+  import { themeStore } from "svelte-elegant/stores/ElementIdStore";
 
   let subjects;
-  let specialWords = { value: "", translate: "", example_use: "" };
+  let specialWords = [{ value: "", translate: "", example_use: "" }];
   let subjectWord = "";
 
   $: if (subjectWord) {
@@ -13,7 +14,6 @@
 
   async function getSpecialWords() {
     specialWords = await fetch.getSpecialWords(subjectWord);
-    console.log(specialWords);
   }
 
   onMount(async () => {
@@ -51,10 +51,22 @@
     <DataGrid
       width="100%"
       maxWidth="838px"
-      maxHeight="516px"
+      maxHeight="514px"
       {columns}
       rows={specialWords}
     />
+  </div>
+  <div class="subject">
+    <div style:display="flex">
+      <span>Quantity of words:</span>
+      <span
+        style:margin-left="5px"
+        style:font-weight="600"
+        style:color={$themeStore.palette.primary}
+      >
+        {specialWords?.length}
+      </span>
+    </div>
   </div>
 </div>
 
