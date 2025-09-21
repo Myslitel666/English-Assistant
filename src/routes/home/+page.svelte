@@ -48,7 +48,13 @@
     <AutoComplete bind:value={subjectWord} options={subjects} label="Subject" />
   </div>
   <div class="subject">
-    <DataGrid maxHeight="518px" {columns} rows={specialWords} />
+    <DataGrid
+      width="100%"
+      maxWidth="838px"
+      maxHeight="516px"
+      {columns}
+      rows={specialWords}
+    />
   </div>
 </div>
 
