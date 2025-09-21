@@ -38,7 +38,7 @@
 </script>
 
 <div class="page">
-  <p style:margin-top="10px" style:margin-bottom="10px">
+  <p>
     The <span style:font-weight="600">Dictionary</span> of special words
     designed to study <span style:font-weight="600">Web-Development</span> and technical
     documentation.
@@ -58,8 +58,9 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 10px;
+    gap: 10px;
+    box-sizing: border-box;
   }
 
   .subject {
@@ -67,6 +68,5 @@
     justify-content: center;
     align-items: center;
     gap: 5px;
-    margin-bottom: 10px;
   }
 </style>

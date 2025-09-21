@@ -1,6 +1,11 @@
 <script>
   import "../app.css";
-  import { ThemeProvider, Header, ColorThemeSwitch } from "svelte-elegant";
+  import {
+    ThemeProvider,
+    Header,
+    ColorThemeSwitch,
+    ScrollbarContainer,
+  } from "svelte-elegant";
   import { themeMode } from "svelte-elegant/stores/themeStore";
   import { themeStore } from "svelte-elegant/stores/themeStore";
 
@@ -14,34 +19,35 @@
   let { children } = $props();
 </script>
 
-<Header height="53px">
-  <button style:gap="0.5rem">
-    <img
-      src={$themeMode === "light" ? "/light-mega2.png" : "/dark-mega2.png"}
-      alt="logo"
-      class="logo"
-    />
-    <p style:font-size="26px">
-      <span
-        style:margin-left="3.25rem"
-        style:color={$themeStore.palette.primary}
-        style:transition="all 0.3s"
-      >
-        English Assistant
-      </span>
-    </p>
-  </button>
-  <div style:margin-left="auto" style:margin-right="2px">
-    <ColorThemeSwitch />
-  </div>
-</Header>
-
 <ThemeProvider>
-  <div class="app">
-    <main>
-      {@render children()}
-    </main>
-  </div>
+  <Header height="53px">
+    <button style:gap="0.5rem">
+      <img
+        src={$themeMode === "light" ? "/light-mega2.png" : "/dark-mega2.png"}
+        alt="logo"
+        class="logo"
+      />
+      <p style:font-size="26px">
+        <span
+          style:margin-left="3.25rem"
+          style:color={$themeStore.palette.primary}
+          style:transition="all 0.3s"
+        >
+          English Assistant
+        </span>
+      </p>
+    </button>
+    <div style:margin-left="auto" style:margin-right="2px">
+      <ColorThemeSwitch />
+    </div>
+  </Header>
+  <ScrollbarContainer>
+    <div class="app">
+      <main>
+        {@render children()}
+      </main>
+    </div>
+  </ScrollbarContainer>
 </ThemeProvider>
 
 <style>
