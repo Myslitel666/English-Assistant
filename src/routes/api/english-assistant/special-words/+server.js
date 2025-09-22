@@ -13,7 +13,7 @@ export async function GET({ url }) {
     FROM special_words sw
     LEFT JOIN subjects s ON sw.subject_id = s.id
     WHERE s.title = $1
-    ORDER BY sw.id DESC
+    ORDER BY sw.level DESC, sw.id DESC
   `;
   
   const result = await englishAssistantPool.query(query, params);
