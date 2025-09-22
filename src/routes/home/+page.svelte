@@ -1,12 +1,14 @@
 <script>
-  import { DataGrid, AutoComplete } from "svelte-elegant";
+  import { DataGrid, AutoComplete, IconHover } from "svelte-elegant";
   import { onMount } from "svelte";
   import * as fetch from "./fetch";
   import { themeStore } from "svelte-elegant/stores/ElementIdStore";
+  import { EyeClosed, EyeOpened } from "svelte-elegant/icons-elegant";
 
   let subjects;
   let specialWords = [{ value: "", translate: "", example_use: "" }];
   let subjectWord = "";
+  let isCheck = false;
 
   $: if (subjectWord) {
     getSpecialWords();
@@ -45,15 +47,33 @@
   </p>
   <div class="subject">
     <p>Choose Subject:</p>
-    <AutoComplete bind:value={subjectWord} options={subjects} label="Subject" />
+    <AutoComplete
+      width="150px"
+      bind:value={subjectWord}
+      options={subjects}
+      label="Subject"
+    />
+    <IconHover
+      onClick={() => {
+        isCheck = !isCheck;
+      }}
+    >
+      {#if isCheck}
+        <EyeClosed />
+      {:else}
+        <EyeOpened />
+      {/if}
+    </IconHover>
   </div>
   <div class="subject">
     <DataGrid
-      width="100%"
+      width={isCheck ? "216px" : "100%"}
       maxWidth="838px"
       maxHeight="514px"
-      {columns}
-      rows={specialWords}
+      columns={isCheck ? columns.filter((c) => c.field === "value") : columns}
+      rows={isCheck
+        ? specialWords.map((word) => ({ value: word.value }))
+        : specialWords}
     />
   </div>
   <div class="subject">
