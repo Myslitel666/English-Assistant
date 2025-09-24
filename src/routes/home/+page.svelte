@@ -14,8 +14,6 @@
     getSpecialWords();
   }
 
-  //
-
   async function getSpecialWords() {
     specialWords = await fetch.getSpecialWords(subjectWord);
   }
