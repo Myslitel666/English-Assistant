@@ -20,7 +20,7 @@
 
   onMount(async () => {
     subjects = await fetch.getSubjects();
-    subjectWord = subjects.includes("React") ? "React" : subjects[0];
+    subjectWord = subjects.includes("Standard") ? "Standard" : subjects[0];
     specialWords = await fetch.getSpecialWords(subjectWord);
   });
 
